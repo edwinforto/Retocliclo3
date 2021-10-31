@@ -8,6 +8,7 @@ package com.rentacubiculo.biblioteca.app.controllers;
 import com.rentacubiculo.biblioteca.app.entities.Admin;
 import com.rentacubiculo.biblioteca.app.services.AdminService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,23 +37,29 @@ public class AdminController {
         return service.getAll();
     }
 
+    @GetMapping("/{id}")
+    public Optional<Admin> getAdmin(int id) {
+        return service.getAdmin(id);
+    }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Admin admin) {
-        service.save(admin);
+    public Admin save(@RequestBody Admin admin) {
+        return service.save(admin);
 
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Admin admin) {
+    public Admin update(@RequestBody Admin admin) {
 
-        service.update(admin);
+        return service.update(admin);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") int adminId) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Boolean delete(@PathVariable("id") int adminId) {
 
-        service.delete(adminId);
+        return service.delete(adminId);
     }
 }

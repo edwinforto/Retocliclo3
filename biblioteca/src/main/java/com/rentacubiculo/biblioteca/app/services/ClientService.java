@@ -59,6 +59,15 @@ public class ClientService {
                 if (client.getPassword() != null) {
                     resultado.get().setPassword(client.getPassword());
                 }
+                if (client.getEmail()!= null) {
+                    resultado.get().setEmail(client.getEmail());
+                }
+                if (client.getMessages()!= null) {
+                    resultado.get().setMessages(client.getMessages());
+                }
+                if (client.getReservations()!= null) {
+                    resultado.get().setReservations(client.getReservations());
+                }
                 repository.save(resultado.get());
                 return client;
             } else {

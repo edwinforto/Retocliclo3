@@ -62,6 +62,15 @@ public class LibraryService {
                 if (library.getDescription()!= null) {
                     resultado.get().setDescription(library.getDescription());
                 }
+                if (library.getName()!= null) {
+                    resultado.get().setName(library.getName());
+                }
+                if (library.getMessages()!= null) {
+                    resultado.get().setMessages(library.getMessages());
+                }
+                if (library.getReservations()!= null) {
+                    resultado.get().setReservations(library.getReservations());
+                }
                 repository.save(resultado.get());
                 return library;
             } else {

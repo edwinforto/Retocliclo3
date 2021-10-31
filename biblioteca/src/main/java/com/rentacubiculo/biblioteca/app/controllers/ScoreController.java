@@ -5,9 +5,11 @@
  */
 package com.rentacubiculo.biblioteca.app.controllers;
 
+import com.rentacubiculo.biblioteca.app.entities.Library;
 import com.rentacubiculo.biblioteca.app.entities.Score;
 import com.rentacubiculo.biblioteca.app.services.ScoreService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,24 +37,28 @@ public class ScoreController {
     public List<Score> getScores() {
         return service.getAll();
     }
-
+    @GetMapping("/{id}")
+    public Optional<Score> getScore(int id) {
+        return service.getScore(id);
+    }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Score score) {
-         service.save(score);
+    public Score save(@RequestBody Score score) {
+         return service.save(score);
 
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Score score) {
+    public Score update(@RequestBody Score score) {
 
-         service.update(score);
+         return service.update(score);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") int scoreId) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int scoreId) {
 
-         service.delete(scoreId);
+         return service.delete(scoreId);
     }
 }

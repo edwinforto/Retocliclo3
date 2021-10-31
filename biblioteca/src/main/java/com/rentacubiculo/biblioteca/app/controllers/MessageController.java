@@ -5,9 +5,11 @@
  */
 package com.rentacubiculo.biblioteca.app.controllers;
 
+import com.rentacubiculo.biblioteca.app.entities.Library;
 import com.rentacubiculo.biblioteca.app.entities.Message;
 import com.rentacubiculo.biblioteca.app.services.MessageService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,24 +37,29 @@ public class MessageController {
     public List<Message> getMessages(){
         return service.getAll();
     }
+    @GetMapping("/{id}")
+    public Optional<Message> getMessage(int id) {
+        return service.getMessage(id);
+    }
     
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Message message){
-        service.save(message);
+    public Message save(@RequestBody Message message){
+        return service.save(message);
         
     }
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Message message){
+    public Message update(@RequestBody Message message){
         
-         service.update(message);
+         return service.update(message);
     }
     
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") int messageId ){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int messageId ){
         
-         service.delete(messageId);
+         return service.delete(messageId);
     }
 }

@@ -5,9 +5,11 @@
  */
 package com.rentacubiculo.biblioteca.app.controllers;
 
+import com.rentacubiculo.biblioteca.app.entities.Category;
 import com.rentacubiculo.biblioteca.app.entities.Library;
 import com.rentacubiculo.biblioteca.app.services.LibraryService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,23 +39,29 @@ public class LibraryController {
         return service.getAll();
     }
     
+    @GetMapping("/{id}")
+    public Optional<Library> getLib(int id) {
+        return service.getLibrary(id);
+    }
+    
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Library lib){
-        service.save(lib);
+    public Library save(@RequestBody Library lib){
+        return service.save(lib);
         
     }
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Library lib){
+    public Library update(@RequestBody Library lib){
         
-         service.update(lib);
+         return service.update(lib);
     }
     
+    @ResponseStatus(HttpStatus.CREATED)
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") int libId ){
+    public boolean delete(@PathVariable("id") int libId ){
         
-         service.delete(libId);
+         return service.delete(libId);
     }
 }

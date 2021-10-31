@@ -5,9 +5,11 @@
  */
 package com.rentacubiculo.biblioteca.app.controllers;
 
+import com.rentacubiculo.biblioteca.app.entities.Admin;
 import com.rentacubiculo.biblioteca.app.entities.Category;
 import com.rentacubiculo.biblioteca.app.services.CategoryService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,7 +39,10 @@ public class CategoryController {
     public List<Category> getCategorys() {
         return service.getAll();
     }
-
+    @GetMapping("/{id}")
+    public Optional<Category> getCategory(int id) {
+        return service.getCategory(id);
+    }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody Category category) {
@@ -47,14 +52,15 @@ public class CategoryController {
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Category category) {
+    public Category update(@RequestBody Category category) {
 
-        service.update(category);
+        return service.update(category);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") int categoryId) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int categoryId) {
 
-        service.delete(categoryId);
+        return service.delete(categoryId);
     }
 }

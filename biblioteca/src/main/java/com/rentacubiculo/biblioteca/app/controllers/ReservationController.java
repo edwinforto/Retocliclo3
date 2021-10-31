@@ -5,9 +5,11 @@
  */
 package com.rentacubiculo.biblioteca.app.controllers;
 
+import com.rentacubiculo.biblioteca.app.entities.Library;
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
 import com.rentacubiculo.biblioteca.app.services.ReservationService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,24 +38,29 @@ public class ReservationController {
     public List<Reservation> getReservations() {
         return service.getAll();
     }
-
+    
+    @GetMapping("/{id}")
+    public Optional<Reservation> getReservation(int id) {
+        return service.getReservation(id);
+    }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Reservation reservation) {
-        service.save(reservation);
+    public Reservation save(@RequestBody Reservation reservation) {
+        return service.save(reservation);
 
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Reservation reservation) {
+    public Reservation update(@RequestBody Reservation reservation) {
 
-         service.update(reservation);
+         return service.update(reservation);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") int reservationId) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int reservationId) {
 
-         service.delete(reservationId);
+         return service.delete(reservationId);
     }
 }

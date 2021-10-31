@@ -5,9 +5,11 @@
  */
 package com.rentacubiculo.biblioteca.app.controllers;
 
+import com.rentacubiculo.biblioteca.app.entities.Category;
 import com.rentacubiculo.biblioteca.app.entities.Client;
 import com.rentacubiculo.biblioteca.app.services.ClientService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,23 +39,29 @@ public class ClientController {
         return service.getAll();
     }
     
+    @GetMapping("/{id}")
+    public Optional<Client> getClient(int id) {
+        return service.getClient(id);
+    }
+    
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Client client){
-         service.save(client);
+    public Client save(@RequestBody Client client){
+         return service.save(client);
         
     }
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Client client){
+    public Client update(@RequestBody Client client){
         
-        service.update(client);
+        return service.update(client);
     }
     
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") int clientId ){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int clientId ){
         
-         service.delete(clientId);
+         return service.delete(clientId);
     }
 }

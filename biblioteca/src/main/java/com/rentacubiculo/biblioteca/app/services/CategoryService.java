@@ -56,6 +56,9 @@ public class CategoryService {
                 if (category.getDescription() != null) {
                     resultado.get().setDescription(category.getDescription());
                 }
+                if (category.getLibs()!= null) {
+                    resultado.get().setLibs(category.getLibs());
+                }
                 repository.save(resultado.get());
                 return category;
             } else {
