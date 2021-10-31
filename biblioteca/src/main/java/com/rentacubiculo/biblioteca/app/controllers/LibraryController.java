@@ -58,8 +58,9 @@ public class LibraryController {
          return service.update(lib);
     }
     
-    @ResponseStatus(HttpStatus.CREATED)
+    
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int libId ){
         
          return service.delete(libId);
