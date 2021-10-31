@@ -7,6 +7,10 @@ package com.rentacubiculo.biblioteca.app.services;
 
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
 import com.rentacubiculo.biblioteca.app.repositories.ReservationRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +33,25 @@ public class ReservationService {
 
     public Optional<Reservation> getReservation(int reservationId) {
         return repository.getReservation(reservationId);
+    }
+    
+    public List<Reservation> getReservationsPeriod(String dataA, String dataB){
+           SimpleDateFormat parser = new SimpleDateFormat ("yyyy-MM-dd");
+           Date a = new Date();
+           Date b = new Date();
+           try {
+               a = parser.parse(dataA);
+               b = parser.parse(dataB);
+           }
+           catch (ParseException e){
+               e.printStackTrace();
+           }
+           if (a.before(b)){
+               return repository.getReservationsPeriod(a,b);
+           }
+           else{
+               return new ArrayList<>();
+           }
     }
 
     //Registrar 

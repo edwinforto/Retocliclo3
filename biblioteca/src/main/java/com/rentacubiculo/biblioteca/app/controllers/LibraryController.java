@@ -40,8 +40,8 @@ public class LibraryController {
     }
     
     @GetMapping("/{id}")
-    public Optional<Library> getLib(int id) {
-        return service.getLibrary(id);
+    public Optional<Library> getLib(@PathVariable("id") int libId) {
+        return service.getLibrary(libId);
     }
     
     @PostMapping("/save")

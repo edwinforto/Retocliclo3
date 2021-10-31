@@ -40,9 +40,15 @@ public class ReservationController {
     }
     
     @GetMapping("/{id}")
-    public Optional<Reservation> getReservation(int id) {
-        return service.getReservation(id);
+    public Optional<Reservation> getReservation(@PathVariable("id") int reservationId) {
+        return service.getReservation(reservationId);
     }
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(
+    @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return service.getReservationsPeriod(dateOne,dateTwo);
+}
+    
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation reservation) {

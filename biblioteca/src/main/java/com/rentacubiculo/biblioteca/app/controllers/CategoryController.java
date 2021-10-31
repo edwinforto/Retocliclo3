@@ -40,8 +40,8 @@ public class CategoryController {
         return service.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Category> getCategory(int id) {
-        return service.getCategory(id);
+    public Optional<Category> getCategory(@PathVariable("id") int categoryId) {
+        return service.getCategory(categoryId);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)

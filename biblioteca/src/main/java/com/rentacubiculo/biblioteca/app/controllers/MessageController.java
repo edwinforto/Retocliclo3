@@ -38,8 +38,8 @@ public class MessageController {
         return service.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Message> getMessage(int id) {
-        return service.getMessage(id);
+    public Optional<Message> getMessage(@PathVariable("id") int messageId) {
+        return service.getMessage(messageId);
     }
     
     @PostMapping("/save")

@@ -38,8 +38,8 @@ public class ScoreController {
         return service.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Score> getScore(int id) {
-        return service.getScore(id);
+    public Optional<Score> getScore(@PathVariable("id") int scoreId) {
+        return service.getScore(scoreId);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)

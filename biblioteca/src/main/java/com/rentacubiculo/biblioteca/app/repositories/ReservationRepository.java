@@ -7,6 +7,7 @@ package com.rentacubiculo.biblioteca.app.repositories;
 
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
 import com.rentacubiculo.biblioteca.app.repositories.crud.ReservationCrudRepository;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class ReservationRepository {
     public Optional<Reservation> getReservation(int id){
         return reservationCrudRepository.findById(id);
     }
+    public List<Reservation> getReservationsPeriod(Date a, Date b){
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
+}
     public Reservation save(Reservation reservation){
         return reservationCrudRepository.save(reservation);
     }

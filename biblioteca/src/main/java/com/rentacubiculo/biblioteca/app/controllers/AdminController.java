@@ -38,8 +38,8 @@ public class AdminController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Admin> getAdmin(int id) {
-        return service.getAdmin(id);
+    public Optional<Admin> getAdmin(@PathVariable("id") int adminId) {
+        return service.getAdmin(adminId);
     }
 
     @PostMapping("/save")

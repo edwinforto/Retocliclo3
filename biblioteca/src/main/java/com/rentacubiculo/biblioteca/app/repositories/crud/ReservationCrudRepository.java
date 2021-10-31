@@ -6,6 +6,8 @@
 package com.rentacubiculo.biblioteca.app.repositories.crud;
 
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
+import java.util.Date;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +15,6 @@ import org.springframework.data.repository.CrudRepository;
  * @author EdwinForero
  */
 public interface ReservationCrudRepository extends CrudRepository<Reservation,Integer> {
-    
+    public List<Reservation> findAllByStartDateAfterAndStartDateBefore(Date dateOne,Date
+        dateTwo );
 }
