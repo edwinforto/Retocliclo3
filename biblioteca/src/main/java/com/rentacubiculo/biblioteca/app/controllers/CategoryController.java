@@ -47,14 +47,14 @@ public class CategoryController {
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category update(@RequestBody Category category) {
+    public void update(@RequestBody Category category) {
 
-        return service.update(category);
+        service.update(category);
     }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int categoryId) {
+    public void delete(@PathVariable("id") int categoryId) {
 
-        return service.delete(categoryId);
+        service.delete(categoryId);
     }
 }

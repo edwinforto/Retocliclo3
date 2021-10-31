@@ -45,14 +45,14 @@ public class AdminController {
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Admin update(@RequestBody Admin admin) {
+    public void update(@RequestBody Admin admin) {
 
-        return service.update(admin);
+        service.update(admin);
     }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int adminId) {
+    public void delete(@PathVariable("id") int adminId) {
 
-        return service.delete(adminId);
+        service.delete(adminId);
     }
 }
