@@ -50,8 +50,8 @@ public class ReservationService {
         if (reservation.getIdReservation() != null) {
             Optional<Reservation> resultado = repository.getReservation(reservation.getIdReservation());
             if (resultado.isPresent()) {
-                if (reservation.getStarDate() != null) {
-                    resultado.get().setStarDate(reservation.getStarDate());
+                if (reservation.getStartDate() != null) {
+                    resultado.get().setStartDate(reservation.getStartDate());
                 }
                 if (reservation.getDevolutionDate() != null) {
                     resultado.get().setDevolutionDate(reservation.getDevolutionDate());

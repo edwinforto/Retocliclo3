@@ -39,11 +39,13 @@ public class Library implements Serializable {
     private String target;
     private Integer capacity;
     private String description;
+    private String name;
+    
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("libs")
     private Category category;
-    private String name;
+    
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "lib")
     @JsonIgnoreProperties({"lib","client"})
     private List<Message> messages;

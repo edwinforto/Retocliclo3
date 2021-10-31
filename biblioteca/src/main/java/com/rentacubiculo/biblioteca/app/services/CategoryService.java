@@ -33,10 +33,10 @@ public class CategoryService {
 
     //Registrar 
     public Category save(Category category) {
-        if (category.getCategoryId() == null) {
+        if (category.getId() == null) {
             return repository.save(category);
         } else {
-            Optional<Category> resultado = repository.getCategory(category.getCategoryId());
+            Optional<Category> resultado = repository.getCategory(category.getId());
             if (resultado.isPresent()) {
                 return category;
             } else {
@@ -47,8 +47,8 @@ public class CategoryService {
 
     //Actualizar
     public Category update(Category category) {
-        if (category.getCategoryId() != null) {
-            Optional<Category> resultado = repository.getCategory(category.getCategoryId());
+        if (category.getId() != null) {
+            Optional<Category> resultado = repository.getCategory(category.getId());
             if (resultado.isPresent()) {
                 if (category.getName() != null) {
                     resultado.get().setName(category.getName());

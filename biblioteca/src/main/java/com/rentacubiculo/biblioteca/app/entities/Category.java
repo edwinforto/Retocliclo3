@@ -32,7 +32,7 @@ import lombok.NoArgsConstructor;
 public class Category implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer categoryId;
+    private Integer id;
     @Column(length = 45)
     private String name;
     
