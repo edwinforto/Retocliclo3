@@ -36,10 +36,11 @@ public class Library implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String target;
     private Integer capacity;
     private String description;
-    private String name;
+    
     
     @ManyToOne
     @JoinColumn(name = "categoryId")
