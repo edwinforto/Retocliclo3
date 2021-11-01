@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,13 +55,13 @@ public class ReservationService {
                return new ArrayList<>();
            }
     }
-    public HashMap<String,Integer> longitudCompletedCancelled()
+    public LinkedHashMap<String,Integer> longitudCompletedCancelled()
     {
-         HashMap<String, Integer> resultado = new HashMap<String, Integer>();
-         int cancelled = repository.getReservationsByStatus("cancelled").size();
-         resultado.put("canceled", cancelled);
+         LinkedHashMap<String, Integer> resultado = new LinkedHashMap<String, Integer>();
          int completed = repository.getReservationsByStatus("completed").size();
          resultado.put("completed", completed);
+         int cancelled = repository.getReservationsByStatus("cancelled").size();
+         resultado.put("cancelled", cancelled);
          return resultado;
     }
     //Registrar 

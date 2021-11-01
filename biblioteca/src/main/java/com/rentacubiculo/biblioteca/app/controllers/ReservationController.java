@@ -9,6 +9,7 @@ import com.rentacubiculo.biblioteca.app.entities.Library;
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
 import com.rentacubiculo.biblioteca.app.services.ReservationService;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class ReservationController {
         return service.getReservationsPeriod(dateOne,dateTwo);
     }
     @GetMapping("/report-status")
-    public HashMap<String,Integer> getNumberCompletedCancelled(){
+    public LinkedHashMap<String,Integer> getNumberCompletedCancelled(){
         return service.longitudCompletedCancelled();
     }
     
