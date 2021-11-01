@@ -8,6 +8,7 @@ package com.rentacubiculo.biblioteca.app.controllers;
 import com.rentacubiculo.biblioteca.app.entities.Library;
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
 import com.rentacubiculo.biblioteca.app.services.ReservationService;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,11 @@ public class ReservationController {
     public List<Reservation> getReservationsReportDates(
     @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
         return service.getReservationsPeriod(dateOne,dateTwo);
-}
+    }
+    @GetMapping("/report-status")
+    public HashMap<String,Integer> getNumberCompletedCancelled(){
+        return service.longitudCompletedCancelled();
+    }
     
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)

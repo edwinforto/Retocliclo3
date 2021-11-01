@@ -17,4 +17,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface ReservationCrudRepository extends CrudRepository<Reservation,Integer> {
     public List<Reservation> findAllByStartDateAfterAndStartDateBefore(Date dateOne,Date
         dateTwo );
+    
+public List<Reservation> findByStatus(String status);
 }

@@ -6,6 +6,7 @@
 package com.rentacubiculo.biblioteca.app.repositories.crud;
 
 import com.rentacubiculo.biblioteca.app.entities.Client;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +14,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author EdwinForero
  */
 public interface ClientCrudRepository extends CrudRepository<Client,Integer>{
-    
+ 
 }
