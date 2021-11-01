@@ -6,6 +6,7 @@
 package com.rentacubiculo.biblioteca.app.services;
 
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
+import com.rentacubiculo.biblioteca.app.reports.CountClients;
 import com.rentacubiculo.biblioteca.app.repositories.ReservationRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -121,4 +122,8 @@ public class ReservationService {
         }).orElse(false);
         return abool;
     }
+    public List<CountClients> getTopClients(){
+       return repository.getTopClient();
+    }
+    
 }

@@ -5,8 +5,11 @@
  */
 package com.rentacubiculo.biblioteca.app.repositories;
 
+import com.rentacubiculo.biblioteca.app.entities.Client;
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
+import com.rentacubiculo.biblioteca.app.reports.CountClients;
 import com.rentacubiculo.biblioteca.app.repositories.crud.ReservationCrudRepository;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +44,13 @@ public class ReservationRepository {
         reservationCrudRepository.delete(reservation);
     }
 
-
+     public List<CountClients> getTopClient(){
+        List<CountClients> clientList = new ArrayList<>();
+        List<Object[]> report = reservationCrudRepository.countTotalReservationByClient();
+        for(int i=0;i<report.size();i++){
+            clientList.add(new CountClients((Long) report.get(i)[1] ,(Client)report.get(i)[0]));
+            }
+        return clientList;
+    }
     
 }
