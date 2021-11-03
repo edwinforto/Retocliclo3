@@ -5,11 +5,9 @@
  */
 package com.rentacubiculo.biblioteca.app.controllers;
 
-import com.rentacubiculo.biblioteca.app.entities.Library;
 import com.rentacubiculo.biblioteca.app.entities.Reservation;
 import com.rentacubiculo.biblioteca.app.reports.CountClients;
 import com.rentacubiculo.biblioteca.app.services.ReservationService;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;

@@ -5,7 +5,6 @@
  */
 package com.rentacubiculo.biblioteca.app.controllers;
 
-import com.rentacubiculo.biblioteca.app.entities.Library;
 import com.rentacubiculo.biblioteca.app.entities.Score;
 import com.rentacubiculo.biblioteca.app.services.ScoreService;
 import java.util.List;

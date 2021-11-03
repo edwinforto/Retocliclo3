@@ -6,8 +6,6 @@
 package com.rentacubiculo.biblioteca.app.repositories.crud;
 
 import com.rentacubiculo.biblioteca.app.entities.Client;
-import java.util.List;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
