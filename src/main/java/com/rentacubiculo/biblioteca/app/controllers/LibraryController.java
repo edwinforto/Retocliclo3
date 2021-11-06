@@ -59,7 +59,7 @@ public class LibraryController {
     }
     
     
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int libId ){
         
