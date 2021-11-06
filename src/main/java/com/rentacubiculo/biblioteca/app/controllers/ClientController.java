@@ -59,7 +59,7 @@ public class ClientController {
         return service.update(client);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int clientId ){
         
